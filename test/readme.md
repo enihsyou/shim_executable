@@ -1,0 +1,2 @@
+# Test Applications
+These are two applications are to manually test shimming. Their only action is to yield the executable name, its directory, the current directory, and the commandline (executable and argument string). The console app, of course, prints to the console where the GUI app does the same with a message box. Both will await input before exiting however the latter does not lock the terminal.
