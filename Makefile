@@ -1,5 +1,5 @@
 CPPFLAGS = -nologo -std:c++17 -DNDEBUG -MD -O2 -GF -GR- -GL -EHsc
-HEADERS = shim_executable.h shim.h
+HEADERS = shim_resources.h log.h resource_functions.h get_argument.h utility_functions.h 
 SHIMS = shim_gui.exe shim_console.exe
 
 all: shim_executable.exe cleanup
@@ -7,7 +7,7 @@ all: shim_executable.exe cleanup
 .SILENT:
 
 # SHIMS
-$(SHIMS): $*.cpp $*.rc $(HEADERS)
+$(SHIMS): $*.cpp $*.rc shim_template.h $(HEADERS)
 	echo Building $*.exe
 	$(RC) /nologo $*.rc
 	$(CPP) $(CPPFLAGS) $*.cpp $*.res
@@ -15,7 +15,7 @@ $(SHIMS): $*.cpp $*.rc $(HEADERS)
 
 
 # Main Application
-shim_executable.exe: $*.cpp $*.rc $*.h $(SHIMS)
+shim_executable.exe: $*.cpp $*.rc $(SHIMS) $(HEADERS)
 	echo Building $*.exe
 	$(RC) /nologo $*.rc
 	$(CPP) $(CPPFLAGS) $*.cpp $*.res
