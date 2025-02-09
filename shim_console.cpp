@@ -1,9 +1,8 @@
-#include "shim.h"
+#include "shim_template.h"
 
 // ------------------------------------------------------------------------- //
 // MAIN METHOD                                                               // 
 // ------------------------------------------------------------------------- //
-int wmain(int argc, wchar_t* argv[]) { 
-  return shim(argc, argv);
+int wmain(int argc, wchar_t* argv[]) {
+  return shim();
 }
-

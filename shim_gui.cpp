@@ -1,15 +1,10 @@
-#include "shim.h"
+#include "shim_template.h"
 
 // ------------------------------------------------------------------------- //
 // MAIN METHOD                                                               // 
 // ------------------------------------------------------------------------- //
-int APIENTRY WinMain(
+int APIENTRY wWinMain(
     HINSTANCE hInst, HINSTANCE hInstPrev,
-    PSTR cmdline, int cmdshow) {
-  LPWSTR *argList;
-  int nArgs;
-  argList = CommandLineToArgvW(GetCommandLineW(), &nArgs);
-
-  return shim(nArgs, argList);
+    PWSTR pCmdLine, int nCmdShow) {
+  return shim();
 }
-  
