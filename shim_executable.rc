@@ -1,4 +1,4 @@
-#include "shim_resources.h"
+#include <version.h>
 
 SHIM_GUI        RCDATA      "shim_gui.exe"
 SHIM_CONSOLE    RCDATA      "shim_console.exe"

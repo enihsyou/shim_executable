@@ -1,5 +1,5 @@
-CPPFLAGS = -nologo -std:c++17 -DNDEBUG -MD -O2 -GF -GR- -GL -EHsc
-HEADERS = shim_resources.h log.h resource_functions.h get_argument.h utility_functions.h 
+CPPFLAGS = -nologo -std:c++17 -DNDEBUG -MD -O2 -GF -GR- -GL -EHsc -I include
+HEADERS = include\*.h 
 SHIMS = shim_gui.exe shim_console.exe
 
 all: shim_executable.exe cleanup
@@ -22,6 +22,7 @@ shim_executable.exe: $*.cpp $*.rc $(SHIMS) $(HEADERS)
 	echo.
 
 
+# Post Build Clean-Up
 cleanup: 
 	echo Removing intermediate files
 	rm *.obj

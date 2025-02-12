@@ -28,11 +28,11 @@
  * with this program. If not, see <https://www.gnu.org/licenses/>.
  * ------------------------------------------------------------------------- */
 
-#include "shim_resources.h"
-#include "log.h"
-#include "resource_functions.h"
-#include "get_argument.h"
-#include "utility_functions.h"
+#include <version.h>
+#include <log.h>
+#include <resource_functions.h>
+#include <get_argument.h>
+#include <utility_functions.h>
 
 #pragma comment(lib, "SHELL32.LIB")
 

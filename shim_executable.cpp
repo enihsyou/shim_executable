@@ -22,11 +22,11 @@
  * with this program. If not, see <https://www.gnu.org/licenses/>.
  * ------------------------------------------------------------------------- */
 
-#include "shim_resources.h"
-#include "log.h"
-#include "resource_functions.h"
-#include "get_argument.h"
-#include "utility_functions.h"
+#include <version.h>
+#include <log.h>
+#include <resource_functions.h>
+#include <get_argument.h>
+#include <utility_functions.h>
 
 #pragma comment(lib, "SHELL32.LIB")
 
@@ -283,8 +283,8 @@ int wmain(int argc, wchar_t* argv[], wchar_t* envp[]) {
   // Debug Info
   //       --debug
   debug = GetArgument(arg_list, L"--debug");
-  if (!debug) LOGCFG.level = 1
-    else LOGCFG.level = 3;      // ignore level 4+
+  if (!debug) LOGCFG.level = 1;
+  else LOGCFG.level = 3;      // ignore level 4+
 
   
   // ------------------------------------------ //

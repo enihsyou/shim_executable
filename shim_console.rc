@@ -1,5 +1,5 @@
 #define VER_SHIM_FILENAME "shim_console.exe"
-#include "shim_resources.h"
+#include <version.h>
 
 99              VERSIONINFO
 FILEVERSION     VER_FILEVERSION
