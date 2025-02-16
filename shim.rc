@@ -1,0 +1,51 @@
+#include <version.h>
+
+// Just in case the parent doesn't have any version info
+1               VERSIONINFO     
+FILEVERSION     VER_FILEVERSION
+PRODUCTVERSION  VER_FILEVERSION
+FILEOS          0x4
+FILETYPE        0x1
+{
+  BLOCK "StringFileInfo"
+  {    
+    BLOCK "040904E4"
+    {
+      VALUE "InternalName",     VER_SHIM_FILENAME
+      VALUE "OriginalFilename", VER_SHIM_FILENAME ".EXE"
+    }
+  }
+  BLOCK "VarFileInfo"
+  {
+    VALUE "Translation", 0x409, 1252
+  }
+}
+
+
+// Note the version info will be buried way down (99) the list as when the shim
+// is actually created we'll copy over the typical version info from the app
+// stored at index 1
+99              VERSIONINFO     
+FILEVERSION     VER_FILEVERSION
+PRODUCTVERSION  VER_FILEVERSION
+FILEOS          0x4
+FILETYPE        0x1
+{
+  BLOCK "StringFileInfo"
+  {    
+    BLOCK "040904E4"
+    {
+      VALUE "FileDescription",  VER_SHIM_DESC
+      VALUE "LegalCopyright",   VER_COPYRIGHT
+      VALUE "InternalName",     VER_SHIM_FILENAME
+      VALUE "OriginalFilename", VER_SHIM_FILENAME ".EXE"
+      VALUE "ProductName",      VER_PRODUCT
+      VALUE "ProductVersion",   VER_FILEVERSION_STR
+      VALUE "FileVersion",      VER_FILEVERSION_STR
+    }
+  }
+  BLOCK "VarFileInfo"
+  {
+    VALUE "Translation", 0x409, 1252
+  }
+}
