@@ -16,7 +16,7 @@ FILETYPE        0x1
       VALUE "FileDescription",  VER_DESC
       VALUE "LegalCopyright",   VER_COPYRIGHT
       VALUE "InternalName",     VER_FILENAME
-      VALUE "OriginalFilename", VER_FILENAME
+      VALUE "OriginalFilename", VER_FILENAME ".EXE"
       VALUE "ProductName",      VER_PRODUCT
       VALUE "ProductVersion",   VER_FILEVERSION_STR
       VALUE "FileVersion",      VER_FILEVERSION_STR
