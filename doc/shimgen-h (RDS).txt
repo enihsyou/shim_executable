@@ -1,0 +1,20 @@
+ShimGen generates an executable that will call a file relative to its location. Think of it as batch redirect 2.0.
+To use shimgen, supply an output path for the shim executable, relative path to executable, and whether it is a GUI you are calling
+Example: shimgen --output=bob --path="the\ relative \path"
+Example: shimgen -o="..\bob.exe" -p="the\ relative \path" --gui
+  -?, --help, -h             Prints out the options.
+  -o, --output=VALUE         REQUIRED: output - The is the name of the shim
+                               (e.g. rh.exe for rh.exe). This can also contain
+                               the path to the output file
+  -p, --path=VALUE           REQUIRED: path - The path to the executable. Can
+                               be relative or absolute.
+  -i, --iconpath=VALUE       : path of executable for icon - The path to the
+                               executable for resolving the icon. Can be
+                               relative or absolute (suggest absolute).
+  -c, --command=VALUE        command - The command you want to pass to the
+                               executable.
+      --gui                  GUI - This instructs ShimGen that the underlying
+                               executable is a GUI and it should not wait for
+                               it to finish execution.
+      --debug                debug - This instructs ShimGen to write out all
+                               messages. Defaults to false.

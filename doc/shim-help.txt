@@ -1,0 +1,59 @@
+===============================================================================
+ INFO
+===============================================================================
+This is an application 'shim' that will execute another application (typically
+named the same located elsewhere). Execute with --shim-NoOp to identify its
+target.
+
+Execute SHIM_EXEC -h or visit https://github.com/jphilbert/shim_executable for
+additional information.
+
+
+===============================================================================
+ ARGUMENTS
+===============================================================================
+The arguments below can be passed to the shim prior to it executing its parent.
+They are not case-sensitive and have an equivilent shimgen alias for
+Chocolately compatibility.
+
+Technically the arguments need only match "--shim[a-z]*-[hlwegun][a-z]*".
+
+All other argument are passed to the parent executable.
+
+    --shim-Help     Shows this help menu and exits without running the target
+
+    --shim-Log      Turns on diagnostic messaging in the console. If a windows
+                        application executed without a console, a file (<shim
+                        path>.SHIM.LOG) will be generated instead.
+                        (alias --shimgen-log)
+
+    --shim-Wait     Explicitly tell the shim to wait for target to exit. Useful
+                        when something is calling a GUI and wanting to block
+                        command line programs. This is the default behavior
+                        unless the shim was created with the --GUI flag. Cannot
+                        be used with --shim-Exit or --shim-GUI.
+                        (alias --shimgen-waitforexit)
+
+    --shim-Exit     Explicitly tell the shim to exit immediately after creating
+                        the application process. This is the default behavior
+                        when the shim was created with the --GUI flag. Cannot
+                        be used with --shim-Wait.
+                        (alias --shimgen-exit)
+
+    --shim-GUI      Explicitly behave as if the target is a GUI application.
+                        This is helpful in situations where the package did not
+                        have a proper .gui file. This technically has the same
+                        effect as --shim-Exit and is kept for legacy purposes.
+                        (alias --shimgen-gui)
+
+    --shim-UseTargetWorkingDirectory
+                    Set the working directory to the target path if omitted. By
+                        default the application will use the shim's path.
+                        Useful when programs need to be running from where they
+                        are located (usually indicates programs that have
+                        issues being run globally).
+                        (alias --shimgen-UseTargetWorkingDirectory)
+
+    --shim-NoOp     Executes the shim without calling the target application.
+                        Logging is implicitly turned on.
+                        (alias --shimgen-noop)

@@ -1,0 +1,97 @@
+===============================================================================
+SHIM CREATOR - v2.1.1
+===============================================================================
+    SHIMGEN [-? | -h | --help]
+    SHIMGEN -p PATH -o OUTPUT [...]
+    SHIMGEN --path=PATH --output=OUTPUT [...]
+
+
+-------------------------------------------------------------------------------
+ INFO
+-------------------------------------------------------------------------------
+Generates a 'shim' file that has the sole purpose of executing another file,
+similar to a shortcut, yet is a full fledged executable. During creation, the
+resources of the source executable such as version info and icons are copied to
+the shim. In addition to the source path, specific command line arguments can
+be embedded and hence editable by a resource editor (e.g.
+https://www.angusj.com/resourcehacker).
+
+One specific option to take note of is denoting if the source application has a
+GUI. Typically, this simply denotes if the shim process should end immediately
+after starting the process for the source or to wait (these two options are
+also selectable in the shim). In either case, the shim, originally built as a
+console application, will utilize the current console when executed from the
+command line. Otherwise it will spawn a console window to generate the child
+process for the source executable. For GUI applications, where waiting is
+unneeded, this console is immediately destroyed, albeit still noticeable. To
+remedy this adverse effect, the --GUI option generates a shim built with the
+GUI subsystem as opposed to the console subsystem. This in effect removes the
+creation of a console for GUI source applications.
+
+Shims created with and without the --GUI option still include the options to
+wait or exit immediately and for the most part are indistinguishable. One
+important yet practical difference is that GUI shims by default will exit
+immediately after creating its child process whereas console shims will default
+to wait. Of course GUI shims can be called from a console and flagged to wait
+which should function similarly to console shims. Issues only arise if GUI
+shims are called with any type of console logging turned on (i.e. --shim-help
+or --shim-log). The type of CLI (e.g., powershell, cmd.exe, etc.) appears to
+impact the output. If run outside of a console, in which case a console would
+need to be created for the output stream, the shim instead writes to a
+.SHIM.LOG file with the same path.
+
+For additional information, execute the shim with --shim-help flag or visit
+https://github.com/jphilbert/shim_executable.
+
+
+-------------------------------------------------------------------------------
+ EXAMPLES
+-------------------------------------------------------------------------------
+Paths are always expanded and vary on the argument. The output is relative to
+the SHIMGEN executable directory whereas the application path is relative to the
+output. Therefore, assuming SHIMGEN.exe is located in C:\SHIMGEN_DIR the
+following examples are equivalent:
+
+    SHIMGEN --output .\SHIM\app.exe --path ..\..\APP_PATH\app.exe
+
+    SHIMGEN --output C:\SHIMGEN_DIR\SHIM\app.exe --path C:\APP_PATH\app.exe
+
+
+-------------------------------------------------------------------------------
+ ARGUMENTS
+-------------------------------------------------------------------------------
+The application accepts the following arguments and they are not
+case-sensitive. Argument flags can be shortened to a single dash and initial
+letter (except for --GUI and --DEBUG) and values can be separated by either a
+space or equal sign.
+
+    --help              Show this help message and exit.
+
+    --path PATH         [REQUIRED] The path to the executable to shim. This can
+                            be relative from the OUTPUT path and will be
+                            expanded.
+
+    --output OUTPUT     [REQUIRED] The path to the shim to create. This can be
+                            relative from the SHIMGEN executable and will be
+                            expanded.
+
+    --command ARGS      Additional arguments the shim should pass to the
+                            original executable automatically. Should be quoted
+                            for multiple arguments.
+
+    --iconpath ICON     [UNIMPLEMENTED] Path to a file to use for the shim's
+                            icon. By default, the executable's icon resources
+                            are used.
+
+    --gui               Explicitly sets shim to be created using the GUI or
+    --console               console subsystem. GUI shims exit as soon as the
+                            child process for the executable is created where
+                            as console shims will wait. If neither is set, by
+                            default the subsystem will be infered by the
+                            executable, thus these options likely would be need
+                            only for special cases.
+
+    --debug             Print additional information when creating the shim to
+                            the console.
+
+===============================================================================
