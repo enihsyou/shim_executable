@@ -47,11 +47,11 @@ All other argument are passed to the parent executable.
                         (alias --shimgen-gui)
 
     --shim-UseTargetWorkingDirectory
-                    Set the working directory to the target path if omitted. By
-                        default the application will use the shim's path.
-                        Useful when programs need to be running from where they
-                        are located (usually indicates programs that have
-                        issues being run globally).
+                    Set the working directory to the target path. By default
+                        the application will use the shim's path. Useful when
+                        programs need to be running from where they are located
+                        (usually indicates programs that have issues being run
+                        globally).
                         (alias --shimgen-UseTargetWorkingDirectory)
 
     --shim-NoOp     Executes the shim without calling the target application.
