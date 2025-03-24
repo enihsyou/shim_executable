@@ -1,0 +1,28 @@
+name: Build
+
+on: push
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Visual Studio Shell
+        uses: egor-tensin/vs-shell@v2
+        with:
+          arch: x86
+
+      - name: Build with nmake
+        run: nmake
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: shim_exec_windows_x86
+          path: bin/
